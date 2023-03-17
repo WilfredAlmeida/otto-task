@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:otto_task/views/screens/gallery_homepage.dart';
+import 'package:otto_task/views/screens/login_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const GalleryHomepageScreen(),
+      home: LoginScreen(),
     );
   }
 }
