@@ -24,6 +24,7 @@ class _GalleryHomepageScreenState extends State<GalleryHomepageScreen> {
   @override
   void initState() {
     super.initState();
+    _getPhotos();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
@@ -39,7 +40,8 @@ class _GalleryHomepageScreenState extends State<GalleryHomepageScreen> {
 
     final response = await http.get(
       Uri.parse(
-          'https://jsonplaceholder.typicode.com/photos?_page=$_page&_limit=10'),
+        'https://api.unsplash.com/photos?page=$_page&per_page=10&client_id=K7jVlDTauoN42wwdqHvlJY7qE4wpnhp-iNpas-VUpbE',
+      ),
     );
 
     setState(() {
@@ -85,17 +87,14 @@ class _GalleryHomepageScreenState extends State<GalleryHomepageScreen> {
                 MaterialPageRoute(
                   builder: (context) => FullScreenImage(
                     key: Key(index.toString()),
-                    imageUrl: photo['url'],
+                    imageUrl: photo['urls']['small'],
                   ),
                 ),
               );
             },
             child: ImageCardWidget(
-              imageUrl: photo['url'],
-              title: '',
-              description: '',
+              imageUrl: photo['urls']['thumb'],
               isBookmarked: false,
-              onBookmarkToggle: () {},
             ),
           );
         },

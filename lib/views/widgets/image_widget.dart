@@ -3,17 +3,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class ImageCardWidget extends StatefulWidget {
   final String imageUrl;
-  final String title;
-  final String description;
-  late  bool isBookmarked;
-  final VoidCallback onBookmarkToggle;
+  late bool isBookmarked;
 
-  ImageCardWidget({super.key,
+  ImageCardWidget({
+    super.key,
     required this.imageUrl,
-    required this.title,
-    required this.description,
     required this.isBookmarked,
-    required this.onBookmarkToggle,
   });
 
   @override
@@ -32,6 +27,8 @@ class _ImageCardWidgetState extends State<ImageCardWidget> {
               CachedNetworkImage(
                 imageUrl: widget.imageUrl,
                 fit: BoxFit.cover,
+                height: 150,
+                width: double.infinity,
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator()),
               ),
@@ -40,15 +37,15 @@ class _ImageCardWidgetState extends State<ImageCardWidget> {
                 right: 0.0,
                 child: IconButton(
                   icon: Icon(
-                    widget.isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                    widget.isBookmarked
+                        ? Icons.bookmark
+                        : Icons.bookmark_border,
                     color: Colors.white,
                   ),
-                  onPressed: (){
+                  onPressed: () {
                     setState(() {
                       widget.isBookmarked = !widget.isBookmarked;
                     });
-
-                    widget.onBookmarkToggle();
                   },
                 ),
               ),
