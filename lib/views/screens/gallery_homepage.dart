@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:otto_task/controllers/photos_controller.dart';
 import 'package:otto_task/views/screens/fullscreen_image.dart';
 import 'package:otto_task/views/widgets/appbar.dart';
 import 'package:otto_task/views/widgets/image_widget.dart';
-import 'package:http/http.dart' as http;
 
 class GalleryHomepageScreen extends StatefulWidget {
   const GalleryHomepageScreen({Key? key})
@@ -36,14 +36,10 @@ class _GalleryHomepageScreenState extends State<GalleryHomepageScreen> {
       _isLoading = true;
     });
 
-    final response = await http.get(
-      Uri.parse(
-        'https://api.unsplash.com/photos?page=$_page&per_page=10&client_id=K7jVlDTauoN42wwdqHvlJY7qE4wpnhp-iNpas-VUpbE',
-      ),
-    );
+    final response = await PhotosController.getUnsplashPhotos(_page);
 
     setState(() {
-      _photos.addAll(jsonDecode(response.body));
+      _photos.addAll(jsonDecode(response));
       _isLoading = false;
       _page++;
     });
