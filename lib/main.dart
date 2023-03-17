@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      //Screen flow is: Login screen -> Gallery Screen
       home: LoginScreen(),
     );
   }

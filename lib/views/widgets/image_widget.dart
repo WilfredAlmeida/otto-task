@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+//Image card widget
 class ImageCardWidget extends StatefulWidget {
   final String imageUrl;
   late bool isBookmarked;
@@ -24,6 +25,7 @@ class _ImageCardWidgetState extends State<ImageCardWidget> {
         children: [
           Stack(
             children: [
+              //Cached network image to provide local caching
               CachedNetworkImage(
                 imageUrl: widget.imageUrl,
                 fit: BoxFit.cover,
@@ -37,12 +39,14 @@ class _ImageCardWidgetState extends State<ImageCardWidget> {
                 right: 0.0,
                 child: IconButton(
                   icon: Icon(
+                    //icon decided by toggle status
                     widget.isBookmarked
                         ? Icons.bookmark
                         : Icons.bookmark_border,
                     color: Colors.white,
                   ),
                   onPressed: () {
+                    //Toggle bookmark control variable
                     setState(() {
                       widget.isBookmarked = !widget.isBookmarked;
                     });

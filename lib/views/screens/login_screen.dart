@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:otto_task/views/screens/gallery_homepage.dart';
 
+//Login screen has 2 placeholder buttons for login with Google & Microsoft
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,6 +50,7 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(height: 20.0),
                     ElevatedButton.icon(
                       onPressed: () {
+                        //Both buttons navigate to gallery screen
                         Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (ctx) => const GalleryHomepageScreen()),

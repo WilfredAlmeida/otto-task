@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//Reusable appbar widget
+// ToDo: Implement action buttons
 var GalleryAppbar = AppBar(
   backgroundColor: Colors.transparent,
   elevation: 0,
