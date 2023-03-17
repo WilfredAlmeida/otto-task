@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const GalleryHomepageScreen(title: 'Photo Gallery'),
+      home: const GalleryHomepageScreen(),
     );
   }
 }

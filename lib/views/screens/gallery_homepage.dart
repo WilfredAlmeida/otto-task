@@ -2,15 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:otto_task/views/screens/fullscreen_image.dart';
+import 'package:otto_task/views/widgets/appbar.dart';
 import 'package:otto_task/views/widgets/image_widget.dart';
 import 'package:http/http.dart' as http;
 
 class GalleryHomepageScreen extends StatefulWidget {
-  const GalleryHomepageScreen({Key? key, required this.title})
+  const GalleryHomepageScreen({Key? key})
       : super(key: key);
-
-  final String title;
-
   @override
   _GalleryHomepageScreenState createState() => _GalleryHomepageScreenState();
 }
@@ -60,9 +58,8 @@ class _GalleryHomepageScreenState extends State<GalleryHomepageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      extendBodyBehindAppBar: false,
+      appBar: GalleryAppbar,
       body: GridView.builder(
         controller: _scrollController,
         padding: const EdgeInsets.all(8.0),
