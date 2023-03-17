@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -10,16 +11,23 @@ class FullScreenImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.white70,
-        child: Center(
-          child: PhotoView(
-            key: key,
-            imageProvider: NetworkImage(imageUrl),
-            loadingBuilder: (context, event) => const Center(
-              child: CircularProgressIndicator(),
+      body: SafeArea(
+        child: Container(
+          color: Colors.black,
+          child: Center(
+            child: InteractiveViewer(
+              boundaryMargin: const EdgeInsets.all(20),
+              minScale: 0.5,
+              maxScale: 3.0,
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                fit: BoxFit.contain,
+                placeholder: (context, url) => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ),
-            backgroundDecoration: const BoxDecoration(color: Colors.black),
           ),
         ),
       ),

@@ -99,7 +99,7 @@ class _GalleryHomepageScreenState extends State<GalleryHomepageScreen> {
                 MaterialPageRoute(
                   builder: (context) => FullScreenImage(
                     key: Key(index.toString()),
-                    imageUrl: photo['urls']['small'],
+                    imageUrl: photo['urls']['regular'],
                   ),
                 ),
               );
